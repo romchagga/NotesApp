@@ -20,6 +20,13 @@ class TableViewCell: UITableViewCell {
         return label
     }()
     
+    let dateText: UILabel = {
+        let label = UILabel()
+        label.font = label.font.withSize(10)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private let customView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -62,7 +69,14 @@ class TableViewCell: UITableViewCell {
         NSLayoutConstraint.activate([
             writtenTextLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 10),
             writtenTextLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -10),
-            writtenTextLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor)
+            writtenTextLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor, constant: -10)
+        ])
+        
+        customView.addSubview(dateText)
+        NSLayoutConstraint.activate([
+            dateText.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 10),
+            dateText.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -10),
+            dateText.centerYAnchor.constraint(equalTo: customView.centerYAnchor,constant: 15)
         ])
     }
     

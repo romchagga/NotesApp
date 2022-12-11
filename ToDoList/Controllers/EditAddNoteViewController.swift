@@ -8,6 +8,10 @@
 import UIKit
 
 class EditAddNoteViewController: UIViewController {
+    
+    weak var delegate: DataDelegate?
+    
+    var note = Note(text: "")
                 
     let textView: UITextView = {
         let textView = UITextView()
@@ -22,6 +26,7 @@ class EditAddNoteViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 242/255, green: 241/255, blue: 248/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .black
+       
         
         setConstraints()
         passedDataDelegate()
@@ -39,6 +44,9 @@ class EditAddNoteViewController: UIViewController {
     func passedDataDelegate() {
         navigationItem.backAction = UIAction(handler: { _ in
             self.navigationController?.popViewController(animated: true)
+            guard let text = self.textView.text, !text.isEmpty else {return}
+            self.note.text = text
+            self.delegate?.update(note: self.note)
         })
     }
     

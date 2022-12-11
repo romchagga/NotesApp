@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA42AC742945E3DB007F00DF /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA42AC732945E3DB007F00DF /* Date.swift */; };
 		FA46CC37294542170038E894 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC36294542170038E894 /* AppDelegate.swift */; };
 		FA46CC39294542170038E894 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC38294542170038E894 /* SceneDelegate.swift */; };
 		FA46CC3B294542170038E894 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC3A294542170038E894 /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA42AC732945E3DB007F00DF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
 		FA46CC33294542170038E894 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA46CC36294542170038E894 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA46CC38294542170038E894 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +47,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA42AC722945E3CB007F00DF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA42AC732945E3DB007F00DF /* Date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		FA46CC2A294542170038E894 = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +79,7 @@
 				FA46CC54294544A00038E894 /* View */,
 				FA46CC53294544960038E894 /* Controllers */,
 				FA46CC62294553350038E894 /* Protocols */,
+				FA42AC722945E3CB007F00DF /* Extensions */,
 				FA46CC522945447C0038E894 /* SupportingFiles */,
 			);
 			path = ToDoList;
@@ -201,6 +212,7 @@
 				FA46CC5A294545FA0038E894 /* Note.swift in Sources */,
 				FA46CC3B294542170038E894 /* ViewController.swift in Sources */,
 				FA46CC61294553210038E894 /* EditAddNoteViewController.swift in Sources */,
+				FA42AC742945E3DB007F00DF /* Date.swift in Sources */,
 				FA46CC57294545830038E894 /* TableViewCell.swift in Sources */,
 				FA46CC642945534C0038E894 /* DataDelegate.swift in Sources */,
 				FA46CC37294542170038E894 /* AppDelegate.swift in Sources */,

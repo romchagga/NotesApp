@@ -8,16 +8,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // MARK: Creating properties
+    let editinAddNewController = EditAddNoteViewController()
     //temporarily
-    var notes: [String] = ["Drink", "Shopping", "Playing"] {
+    var notes: [Note] = []  {
         didSet {
             countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
         }
     }
     
-    private var filteredNotes = [String]()
+    private var filteredNotes = [Note]()
     private var searchBarIsEmpty: Bool {
         guard let text = searchC.searchBar.text else {return false}
         return text.isEmpty
@@ -67,6 +68,8 @@ class ViewController: UIViewController {
         configNavC()
         configSearchC()
         configNoteTVC()
+        
+        editinAddNewController.delegate = self
 
         addNewNoteButton.addTarget(self, action: #selector(addNewNoteButtonTapped), for: .touchUpInside)
         
@@ -74,7 +77,7 @@ class ViewController: UIViewController {
     }
     
     @objc func addNewNoteButtonTapped() {
-        navigationController?.pushViewController(EditAddNoteViewController(), animated: true)
+        navigationController?.pushViewController(editinAddNewController, animated: true)
     }
     
     // MARK: Config views
@@ -132,7 +135,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.idCell, for: indexPath) as! TableViewCell
         let object = isFiltering ? filteredNotes[indexPath.row] : notes[indexPath.row]
-        cell.writtenTextLabel.text = object
+        cell.writtenTextLabel.text = object.text
+        cell.dateText.text = object.date
         return cell
     }
     
@@ -150,7 +154,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 extension ViewController: UISearchResultsUpdating {
     
     func updateSearchResults(for searchController: UISearchController) {
-        filteredNotes = notes.filter({$0.lowercased().contains((searchController.searchBar.text?.lowercased())!)})
+        filteredNotes = notes.filter({$0.text.lowercased().contains((searchController.searchBar.text?.lowercased())!)})
+        DispatchQueue.main.async {
+            self.noteTableView.reloadData()
+        }
+    }
+}
+
+extension ViewController: DataDelegate {
+    func update(note: Note) {
+        notes.insert(note, at: 0)
         DispatchQueue.main.async {
             self.noteTableView.reloadData()
         }
