@@ -17,6 +17,16 @@ class ViewController: UIViewController {
         }
     }
     
+    private var filteredNotes = [String]()
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchC.searchBar.text else {return false}
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchC.isActive && !searchBarIsEmpty
+    }
+    
+    
     private let searchC = UISearchController()
     
     private let noteTableView: UITableView = {
@@ -57,12 +67,10 @@ class ViewController: UIViewController {
         configNavC()
         configSearchC()
         configNoteTVC()
-        
-        
+
         addNewNoteButton.addTarget(self, action: #selector(addNewNoteButtonTapped), for: .touchUpInside)
         
         countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
-        
     }
     
     @objc func addNewNoteButtonTapped() {
@@ -75,7 +83,7 @@ class ViewController: UIViewController {
     }
     
     private func configSearchC() {
-       // searchC.searchResultsUpdater = self
+        searchC.searchResultsUpdater = self
         searchC.obscuresBackgroundDuringPresentation = false
         searchC.searchBar.placeholder = "Search"
         navigationItem.searchController = searchC
@@ -117,15 +125,14 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = notes.count
+        let count = isFiltering ? filteredNotes.count : notes.count
         return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.idCell, for: indexPath) as! TableViewCell
-        let object = notes[indexPath.row]
+        let object = isFiltering ? filteredNotes[indexPath.row] : notes[indexPath.row]
         cell.writtenTextLabel.text = object
-        
         return cell
     }
     
@@ -140,4 +147,12 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
-
+extension ViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredNotes = notes.filter({$0.lowercased().contains((searchController.searchBar.text?.lowercased())!)})
+        DispatchQueue.main.async {
+            self.noteTableView.reloadData()
+        }
+    }
+}
