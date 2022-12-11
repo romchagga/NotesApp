@@ -13,6 +13,10 @@
 		FA46CC3E294542170038E894 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA46CC3C294542170038E894 /* Main.storyboard */; };
 		FA46CC40294542180038E894 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA46CC3F294542180038E894 /* Assets.xcassets */; };
 		FA46CC43294542180038E894 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA46CC41294542180038E894 /* LaunchScreen.storyboard */; };
+		FA46CC57294545830038E894 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC56294545830038E894 /* TableViewCell.swift */; };
+		FA46CC5A294545FA0038E894 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC59294545FA0038E894 /* Note.swift */; };
+		FA46CC61294553210038E894 /* EditAddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC60294553210038E894 /* EditAddNoteViewController.swift */; };
+		FA46CC642945534C0038E894 /* DataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC632945534B0038E894 /* DataDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		FA46CC3F294542180038E894 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA46CC42294542180038E894 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA46CC44294542180038E894 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA46CC56294545830038E894 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		FA46CC59294545FA0038E894 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		FA46CC60294553210038E894 /* EditAddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddNoteViewController.swift; sourceTree = "<group>"; };
+		FA46CC632945534B0038E894 /* DataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,67 @@
 		FA46CC35294542170038E894 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				FA46CC36294542170038E894 /* AppDelegate.swift */,
-				FA46CC38294542170038E894 /* SceneDelegate.swift */,
-				FA46CC3A294542170038E894 /* ViewController.swift */,
-				FA46CC3C294542170038E894 /* Main.storyboard */,
+				FA46CC55294544AB0038E894 /* Applications */,
+				FA46CC58294545EC0038E894 /* Model */,
+				FA46CC54294544A00038E894 /* View */,
+				FA46CC53294544960038E894 /* Controllers */,
+				FA46CC62294553350038E894 /* Protocols */,
+				FA46CC522945447C0038E894 /* SupportingFiles */,
+			);
+			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		FA46CC522945447C0038E894 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
 				FA46CC3F294542180038E894 /* Assets.xcassets */,
 				FA46CC41294542180038E894 /* LaunchScreen.storyboard */,
 				FA46CC44294542180038E894 /* Info.plist */,
 			);
-			path = ToDoList;
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		FA46CC53294544960038E894 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FA46CC3A294542170038E894 /* ViewController.swift */,
+				FA46CC60294553210038E894 /* EditAddNoteViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		FA46CC54294544A00038E894 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA46CC56294545830038E894 /* TableViewCell.swift */,
+				FA46CC3C294542170038E894 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA46CC55294544AB0038E894 /* Applications */ = {
+			isa = PBXGroup;
+			children = (
+				FA46CC36294542170038E894 /* AppDelegate.swift */,
+				FA46CC38294542170038E894 /* SceneDelegate.swift */,
+			);
+			path = Applications;
+			sourceTree = "<group>";
+		};
+		FA46CC58294545EC0038E894 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FA46CC59294545FA0038E894 /* Note.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FA46CC62294553350038E894 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FA46CC632945534B0038E894 /* DataDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +198,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA46CC5A294545FA0038E894 /* Note.swift in Sources */,
 				FA46CC3B294542170038E894 /* ViewController.swift in Sources */,
+				FA46CC61294553210038E894 /* EditAddNoteViewController.swift in Sources */,
+				FA46CC57294545830038E894 /* TableViewCell.swift in Sources */,
+				FA46CC642945534C0038E894 /* DataDelegate.swift in Sources */,
 				FA46CC37294542170038E894 /* AppDelegate.swift in Sources */,
 				FA46CC39294542170038E894 /* SceneDelegate.swift in Sources */,
 			);
@@ -289,7 +353,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R69PDMF4Z6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = ToDoList/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -317,7 +381,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R69PDMF4Z6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = ToDoList/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
