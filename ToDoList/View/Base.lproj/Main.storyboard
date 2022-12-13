@@ -24,6 +24,21 @@
             </objects>
             <point key="canvasLocation" x="1005.3435114503816" y="3.5211267605633805"/>
         </scene>
+        <!--Edit Add Note View Controller-->
+        <scene sceneID="1FQ-9b-qd9">
+            <objects>
+                <viewController restorationIdentifier="EditAddNoteViewController" storyboardIdentifier="EditAddNoteViewController" id="W7r-ZI-ih9" customClass="EditAddNoteViewController" customModule="ToDoList" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GZk-xG-tD7">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="de1-kA-JkQ"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zOK-uO-tXp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1727" y="4"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Uua-4S-zKh">
             <objects>

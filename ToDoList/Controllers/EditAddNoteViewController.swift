@@ -27,6 +27,7 @@ class EditAddNoteViewController: UIViewController {
         view.backgroundColor = UIColor(red: 242/255, green: 241/255, blue: 248/255, alpha: 1)
         navigationController?.navigationBar.tintColor = .black
        
+        textView.text = note.text
         
         setConstraints()
         passedDataDelegate()
@@ -46,7 +47,7 @@ class EditAddNoteViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
             guard let text = self.textView.text, !text.isEmpty else {return}
             self.note.text = text
-            self.delegate?.update(note: self.note)
+            self.delegate?.updateAdd(note: self.note)
         })
     }
     

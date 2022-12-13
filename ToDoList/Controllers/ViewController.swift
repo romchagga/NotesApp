@@ -4,19 +4,16 @@
 //
 //  Created by macbook on 11.12.2022.
 //
-
 import UIKit
 
 class ViewController: UIViewController {
-    
     // MARK: Creating properties
-    let editinAddNewController = EditAddNoteViewController()
-    //temporarily
     var notes: [Note] = []  {
         didSet {
             countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
         }
     }
+    var editNote = Note(text: "")
     
     private var filteredNotes = [Note]()
     private var searchBarIsEmpty: Bool {
@@ -26,7 +23,6 @@ class ViewController: UIViewController {
     private var isFiltering: Bool {
         return searchC.isActive && !searchBarIsEmpty
     }
-    
     
     private let searchC = UISearchController()
     
@@ -68,16 +64,17 @@ class ViewController: UIViewController {
         configNavC()
         configSearchC()
         configNoteTVC()
-        
-        editinAddNewController.delegate = self
-
+   
         addNewNoteButton.addTarget(self, action: #selector(addNewNoteButtonTapped), for: .touchUpInside)
         
         countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
     }
     
+    
     @objc func addNewNoteButtonTapped() {
-        navigationController?.pushViewController(editinAddNewController, animated: true)
+        let addVC = EditAddNoteViewController()
+        addVC.delegate = self
+        navigationController?.pushViewController(addVC, animated: true)
     }
     
     // MARK: Config views
@@ -150,9 +147,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             tableView.deleteRows(at: [indexPath], with: .left)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let editVC = storyboard.instantiateViewController(withIdentifier: "EditAddNoteViewController") as? EditAddNoteViewController else {return}
+        editVC.delegate = self
+        editNote = notes[indexPath.row]
+        editVC.note = editNote
+        navigationController?.pushViewController(editVC, animated: true)
+        notes.remove(at: indexPath.row)
+    }
 }
 extension ViewController: UISearchResultsUpdating {
-    
     func updateSearchResults(for searchController: UISearchController) {
         filteredNotes = notes.filter({$0.text.lowercased().contains((searchController.searchBar.text?.lowercased())!)})
         DispatchQueue.main.async {
@@ -160,9 +166,8 @@ extension ViewController: UISearchResultsUpdating {
         }
     }
 }
-
 extension ViewController: DataDelegate {
-    func update(note: Note) {
+    func updateAdd(note: Note) {
         notes.insert(note, at: 0)
         DispatchQueue.main.async {
             self.noteTableView.reloadData()

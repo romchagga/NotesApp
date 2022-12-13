@@ -8,5 +8,6 @@
 import Foundation
 
 protocol DataDelegate: class {
-    func update(note: Note)
+    func updateAdd(note: Note)
 }
+
