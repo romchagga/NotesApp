@@ -11,7 +11,7 @@ class EditAddNoteViewController: UIViewController {
     
     weak var delegate: DataDelegate?
     
-    var note = Note(text: "")
+    var note = Note(text: "", date: "")
                 
     let textView: UITextView = {
         let textView = UITextView()
@@ -47,6 +47,7 @@ class EditAddNoteViewController: UIViewController {
             self.navigationController?.popViewController(animated: true)
             guard let text = self.textView.text, !text.isEmpty else {return}
             self.note.text = text
+            self.note.date = Date().format()
             self.delegate?.updateAdd(note: self.note)
         })
     }

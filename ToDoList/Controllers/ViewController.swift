@@ -13,7 +13,7 @@ class ViewController: UIViewController {
             countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
         }
     }
-    var editNote = Note(text: "")
+    var editNote = Note(text: "", date: "")
     
     private var filteredNotes = [Note]()
     private var searchBarIsEmpty: Bool {
@@ -50,7 +50,6 @@ class ViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-  
     // MARK: Life cycles
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -132,8 +131,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.idCell, for: indexPath) as! TableViewCell
         let object = isFiltering ? filteredNotes[indexPath.row] : notes[indexPath.row]
-        cell.writtenTextLabel.text = object.text
-        cell.dateText.text = object.date
+        cell.setup(note: object)
         return cell
     }
     

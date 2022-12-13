@@ -9,8 +9,5 @@ import Foundation
 
 struct Note {
     var text: String
-    var date: String {
-        let date = Date()
-        return date.format()
-    }
+    var date: String
 }

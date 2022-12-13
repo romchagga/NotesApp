@@ -34,16 +34,7 @@ class TableViewCell: UITableViewCell {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-    // MARK: Life cycles
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        setConstraints()
-        
-        self.backgroundColor = .clear
 
-    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
@@ -53,8 +44,20 @@ class TableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setConstraints()
+        
+        self.backgroundColor = .clear
+    }
     
     // MARK: Config views
+    
+    func setup(note: Note) {
+        writtenTextLabel.text = note.text
+        dateText.text = note.date
+    }
+    
     private func setConstraints() {
         
         self.addSubview(customView)
