@@ -52,10 +52,8 @@ class EditAddNoteViewController: UIViewController {
                 CoreDataManager.shared.save()
                 self.delegate?.updateAdd(note: self.note)
             }
-            
         }
-                                             
-            )
+      )
     }
     
     

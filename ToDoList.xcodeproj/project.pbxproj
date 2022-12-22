@@ -130,8 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				FA46CC59294545FA0038E894 /* Note.swift */,
-				FA4F8C292954ABB80077675C /* ToDoList.xcdatamodeld */,
-				FA4F8C2C2954AC900077675C /* CoreDataManager.swift */,
+				FA4F8C2E2954BDA00077675C /* CoreData */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -142,6 +141,15 @@
 				FA46CC632945534B0038E894 /* DataDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FA4F8C2E2954BDA00077675C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FA4F8C2C2954AC900077675C /* CoreDataManager.swift */,
+				FA4F8C292954ABB80077675C /* ToDoList.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

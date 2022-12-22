@@ -46,5 +46,10 @@ class CoreDataManager {
         request.sortDescriptors = [sortDescriptor]
         return try! viewContext.fetch(request)
     }
+    
+    func deleteNote(note: Note) {
+        viewContext.delete(note)
+        save()
     }
+}
 

@@ -151,6 +151,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        CoreDataManager.shared.deleteNote(note: notes[indexPath.row])
         if isFiltering {
             filteredNotes.remove(at: indexPath.row)
             notes.remove(at: indexPath.row)
@@ -167,6 +168,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         editVC.note.text = editNote.text
         editVC.note.date = editNote.date
         navigationController?.pushViewController(editVC, animated: true)
+        CoreDataManager.shared.deleteNote(note: notes[indexPath.row])
         notes.remove(at: indexPath.row)
     }
 }
