@@ -18,7 +18,14 @@ class ViewController: UIViewController {
     }
     var editNote = Note(text: "", date: "")
     
-    private var filteredNotes = [Note]()
+    var filteredNotes: [Note] = []  {
+        didSet {
+            DispatchQueue.main.async {
+                self.noteTableView.reloadData()
+            }
+        }
+    }
+    
     private var searchBarIsEmpty: Bool {
         guard let text = searchC.searchBar.text else {return false}
         return text.isEmpty
@@ -71,7 +78,6 @@ class ViewController: UIViewController {
         
         countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
     }
-    
     
     @objc func addNewNoteButtonTapped() {
         let addVC = EditAddNoteViewController()
@@ -143,9 +149,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        notes.remove(at: indexPath.row)
-        DispatchQueue.main.async {
-            tableView.deleteRows(at: [indexPath], with: .left)
+        if isFiltering {
+            filteredNotes.remove(at: indexPath.row)
+            notes.remove(at: indexPath.row)
+        } else {
+            notes.remove(at: indexPath.row)
         }
     }
     
@@ -162,16 +170,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filteredNotes = notes.filter({$0.text.lowercased().contains((searchController.searchBar.text?.lowercased())!)})
-//        DispatchQueue.main.async {
-//            self.noteTableView.reloadData()
-//        }
+        DispatchQueue.main.async {
+            self.noteTableView.reloadData()
+        }
     }
 }
 extension ViewController: DataDelegate {
     func updateAdd(note: Note) {
         notes.insert(note, at: 0)
-//        DispatchQueue.main.async {
-//            self.noteTableView.reloadData()
-//        }
     }
 }
