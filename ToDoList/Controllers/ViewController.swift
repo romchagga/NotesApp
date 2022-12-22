@@ -11,6 +11,9 @@ class ViewController: UIViewController {
     var notes: [Note] = []  {
         didSet {
             countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
+            DispatchQueue.main.async {
+                self.noteTableView.reloadData()
+            }
         }
     }
     var editNote = Note(text: "", date: "")
@@ -159,16 +162,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filteredNotes = notes.filter({$0.text.lowercased().contains((searchController.searchBar.text?.lowercased())!)})
-        DispatchQueue.main.async {
-            self.noteTableView.reloadData()
-        }
+//        DispatchQueue.main.async {
+//            self.noteTableView.reloadData()
+//        }
     }
 }
 extension ViewController: DataDelegate {
     func updateAdd(note: Note) {
         notes.insert(note, at: 0)
-        DispatchQueue.main.async {
-            self.noteTableView.reloadData()
-        }
+//        DispatchQueue.main.async {
+//            self.noteTableView.reloadData()
+//        }
     }
 }

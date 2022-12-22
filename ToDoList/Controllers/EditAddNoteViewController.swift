@@ -45,11 +45,15 @@ class EditAddNoteViewController: UIViewController {
     func passedDataDelegate() {
         navigationItem.backAction = UIAction(handler: { _ in
             self.navigationController?.popViewController(animated: true)
-            guard let text = self.textView.text, !text.isEmpty else {return}
-            self.note.text = text
-            self.note.date = Date().format()
-            self.delegate?.updateAdd(note: self.note)
-        })
+            if let text = self.textView.text, !text.isEmpty  {
+                self.note.text = text
+                self.note.date = Date().format()
+                self.delegate?.updateAdd(note: self.note)
+            }
+            
+        }
+                                             
+            )
     }
     
     
