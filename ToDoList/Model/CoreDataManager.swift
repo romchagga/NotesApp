@@ -37,7 +37,7 @@ class CoreDataManager {
             } catch {
                 print("An error while saving")
             }
-        }
+        } 
     }
     
     func fetchNotes() -> [Note] {

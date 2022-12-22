@@ -73,12 +73,12 @@ class ViewController: UIViewController {
         configNavC()
         configSearchC()
         configNoteTVC()
-   
-        addNewNoteButton.addTarget(self, action: #selector(addNewNoteButtonTapped), for: .touchUpInside)
         
         countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
         
         notes = CoreDataManager.shared.fetchNotes()
+        
+        addNewNoteButton.addTarget(self, action: #selector(addNewNoteButtonTapped), for: .touchUpInside)
     }
     
     @objc func addNewNoteButtonTapped() {
@@ -164,7 +164,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         guard let editVC = storyboard.instantiateViewController(withIdentifier: "EditAddNoteViewController") as? EditAddNoteViewController else {return}
         editVC.delegate = self
         editNote = notes[indexPath.row]
-        editVC.note = editNote
+        editVC.note.text = editNote.text
+        editVC.note.date = editNote.date
         navigationController?.pushViewController(editVC, animated: true)
         notes.remove(at: indexPath.row)
     }
