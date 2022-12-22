@@ -16,7 +16,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    var editNote = Note(text: "", date: "")
+    var editNote = Note()
     
     var filteredNotes: [Note] = []  {
         didSet {
@@ -77,6 +77,8 @@ class ViewController: UIViewController {
         addNewNoteButton.addTarget(self, action: #selector(addNewNoteButtonTapped), for: .touchUpInside)
         
         countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
+        
+        notes = CoreDataManager.shared.fetchNotes()
     }
     
     @objc func addNewNoteButtonTapped() {
@@ -169,7 +171,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
 }
 extension ViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        filteredNotes = notes.filter({$0.text.lowercased().contains((searchController.searchBar.text?.lowercased())!)})
+        filteredNotes = notes.filter({$0.text!.lowercased().contains((searchController.searchBar.text?.lowercased())!)})
         DispatchQueue.main.async {
             self.noteTableView.reloadData()
         }

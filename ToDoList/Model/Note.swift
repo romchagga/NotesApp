@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Note {
-    var text: String
-    var date: String
-}
+//struct Note {
+//    var text: String
+//    var date: String
+//}

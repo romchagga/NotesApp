@@ -11,7 +11,8 @@ class EditAddNoteViewController: UIViewController {
     
     weak var delegate: DataDelegate?
     
-    var note = Note(text: "", date: "")
+    var note = Note(context: CoreDataManager.shared.viewContext)
+    
                 
     let textView: UITextView = {
         let textView = UITextView()
@@ -48,6 +49,7 @@ class EditAddNoteViewController: UIViewController {
             if let text = self.textView.text, !text.isEmpty  {
                 self.note.text = text
                 self.note.date = Date().format()
+                CoreDataManager.shared.save()
                 self.delegate?.updateAdd(note: self.note)
             }
             
