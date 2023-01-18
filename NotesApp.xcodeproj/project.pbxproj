@@ -15,7 +15,6 @@
 		FA46CC40294542180038E894 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA46CC3F294542180038E894 /* Assets.xcassets */; };
 		FA46CC43294542180038E894 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA46CC41294542180038E894 /* LaunchScreen.storyboard */; };
 		FA46CC57294545830038E894 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC56294545830038E894 /* TableViewCell.swift */; };
-		FA46CC5A294545FA0038E894 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC59294545FA0038E894 /* Note.swift */; };
 		FA46CC61294553210038E894 /* EditAddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC60294553210038E894 /* EditAddNoteViewController.swift */; };
 		FA46CC642945534C0038E894 /* DataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC632945534B0038E894 /* DataDelegate.swift */; };
 		FA4F8C2B2954ABB80077675C /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA4F8C292954ABB80077675C /* ToDoList.xcdatamodeld */; };
@@ -24,7 +23,7 @@
 
 /* Begin PBXFileReference section */
 		FA42AC732945E3DB007F00DF /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		FA46CC33294542170038E894 /* ToDoList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA46CC33294542170038E894 /* NotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA46CC36294542170038E894 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA46CC38294542170038E894 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FA46CC3A294542170038E894 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -33,7 +32,6 @@
 		FA46CC42294542180038E894 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA46CC44294542180038E894 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA46CC56294545830038E894 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
-		FA46CC59294545FA0038E894 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		FA46CC60294553210038E894 /* EditAddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAddNoteViewController.swift; sourceTree = "<group>"; };
 		FA46CC632945534B0038E894 /* DataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDelegate.swift; sourceTree = "<group>"; };
 		FA4F8C2A2954ABB80077675C /* ToDoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoList.xcdatamodel; sourceTree = "<group>"; };
@@ -62,7 +60,7 @@
 		FA46CC2A294542170038E894 = {
 			isa = PBXGroup;
 			children = (
-				FA46CC35294542170038E894 /* ToDoList */,
+				FA46CC35294542170038E894 /* NotesApp */,
 				FA46CC34294542170038E894 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,15 +68,16 @@
 		FA46CC34294542170038E894 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA46CC33294542170038E894 /* ToDoList.app */,
+				FA46CC33294542170038E894 /* NotesApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FA46CC35294542170038E894 /* ToDoList */ = {
+		FA46CC35294542170038E894 /* NotesApp */ = {
 			isa = PBXGroup;
 			children = (
 				FA46CC55294544AB0038E894 /* Applications */,
+				FA4F8C2C2954AC900077675C /* CoreDataManager.swift */,
 				FA46CC58294545EC0038E894 /* Model */,
 				FA46CC54294544A00038E894 /* View */,
 				FA46CC53294544960038E894 /* Controllers */,
@@ -86,7 +85,7 @@
 				FA42AC722945E3CB007F00DF /* Extensions */,
 				FA46CC522945447C0038E894 /* SupportingFiles */,
 			);
-			path = ToDoList;
+			path = NotesApp;
 			sourceTree = "<group>";
 		};
 		FA46CC522945447C0038E894 /* SupportingFiles */ = {
@@ -129,8 +128,7 @@
 		FA46CC58294545EC0038E894 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FA46CC59294545FA0038E894 /* Note.swift */,
-				FA4F8C2E2954BDA00077675C /* CoreData */,
+				FA4F8C292954ABB80077675C /* ToDoList.xcdatamodeld */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,21 +141,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		FA4F8C2E2954BDA00077675C /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				FA4F8C2C2954AC900077675C /* CoreDataManager.swift */,
-				FA4F8C292954ABB80077675C /* ToDoList.xcdatamodeld */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FA46CC32294542170038E894 /* ToDoList */ = {
+		FA46CC32294542170038E894 /* NotesApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FA46CC47294542180038E894 /* Build configuration list for PBXNativeTarget "ToDoList" */;
+			buildConfigurationList = FA46CC47294542180038E894 /* Build configuration list for PBXNativeTarget "NotesApp" */;
 			buildPhases = (
 				FA46CC2F294542170038E894 /* Sources */,
 				FA46CC30294542170038E894 /* Frameworks */,
@@ -167,9 +156,9 @@
 			);
 			dependencies = (
 			);
-			name = ToDoList;
+			name = NotesApp;
 			productName = ToDoList;
-			productReference = FA46CC33294542170038E894 /* ToDoList.app */;
+			productReference = FA46CC33294542170038E894 /* NotesApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -187,7 +176,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FA46CC2E294542170038E894 /* Build configuration list for PBXProject "ToDoList" */;
+			buildConfigurationList = FA46CC2E294542170038E894 /* Build configuration list for PBXProject "NotesApp" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -200,7 +189,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FA46CC32294542170038E894 /* ToDoList */,
+				FA46CC32294542170038E894 /* NotesApp */,
 			);
 		};
 /* End PBXProject section */
@@ -223,7 +212,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA46CC5A294545FA0038E894 /* Note.swift in Sources */,
 				FA46CC3B294542170038E894 /* ViewController.swift in Sources */,
 				FA46CC61294553210038E894 /* EditAddNoteViewController.swift in Sources */,
 				FA42AC742945E3DB007F00DF /* Date.swift in Sources */,
@@ -381,7 +369,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R69PDMF4Z6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = NotesApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -409,7 +397,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = R69PDMF4Z6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = NotesApp/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -431,7 +419,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FA46CC2E294542170038E894 /* Build configuration list for PBXProject "ToDoList" */ = {
+		FA46CC2E294542170038E894 /* Build configuration list for PBXProject "NotesApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA46CC45294542180038E894 /* Debug */,
@@ -440,7 +428,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FA46CC47294542180038E894 /* Build configuration list for PBXNativeTarget "ToDoList" */ = {
+		FA46CC47294542180038E894 /* Build configuration list for PBXNativeTarget "NotesApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FA46CC48294542180038E894 /* Debug */,
