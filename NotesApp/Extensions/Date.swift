@@ -10,12 +10,7 @@ import Foundation
 extension Date {
     func format() -> String {
         let formatter = DateFormatter()
-        if Calendar.current.isDateInToday(self) {
-            formatter.dateFormat = "H:mm"
-            
-        } else {
-            formatter.dateFormat = "dd/MM/yy"
-        }
+        formatter.dateFormat = "MMM d, HH:mm"
         return formatter.string(from: self)
     }
 }
