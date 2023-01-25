@@ -25,12 +25,9 @@ class EditAddNoteViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(red: 242/255, green: 241/255, blue: 248/255, alpha: 1)
-        navigationController?.navigationBar.tintColor = .black
-       
-        textView.text = note.text
         
-        setConstraints()
+        configViews()
+        
         passedDataDelegate()
     }
     
@@ -53,8 +50,15 @@ class EditAddNoteViewController: UIViewController {
                 CoreDataManager.shared.save()
                 self?.delegate?.updateAdd(note: (note))
             }
-        }
-      )
+        })
     }
     
+    func configViews() {
+        view.backgroundColor = UIColor(red: 242/255, green: 241/255, blue: 248/255, alpha: 1)
+        navigationController?.navigationBar.tintColor = .black
+       
+        textView.text = note.text
+        
+        setConstraints()
+    }
 }
