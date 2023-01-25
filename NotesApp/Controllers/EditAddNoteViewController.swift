@@ -44,13 +44,13 @@ class EditAddNoteViewController: UIViewController {
     }
     
     func passedDataDelegate() {
-        navigationItem.backAction = UIAction(handler: { _ in
-            self.navigationController?.popViewController(animated: true)
-            if let text = self.textView.text, !text.isEmpty  {
-                self.note.text = text
-                self.note.date = Date().format()
+        navigationItem.backAction = UIAction(handler: { [weak self] _ in
+            self?.navigationController?.popViewController(animated: true)
+            if let text = self?.textView.text, !text.isEmpty  {
+                self?.note.text = text
+                self?.note.date = Date().format()
                 CoreDataManager.shared.save()
-                self.delegate?.updateAdd(note: self.note)
+                self?.delegate?.updateAdd(note: (self?.note)!)
             }
         }
       )

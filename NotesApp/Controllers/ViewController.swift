@@ -8,7 +8,7 @@ import UIKit
 
 class ViewController: UIViewController {
     // MARK: Creating properties
-    var notes: [Note] = []  {
+    var notes: [Note] = []  { 
         didSet {
             countOfNotes.text = notes.count > 1 ? "\(notes.count) notes" : "\(notes.count) note"
             DispatchQueue.main.async {
@@ -16,6 +16,7 @@ class ViewController: UIViewController {
             }
         }
     }
+    
     var editNote = Note()
     
     var filteredNotes: [Note] = []  {
