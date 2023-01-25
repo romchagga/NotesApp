@@ -27,7 +27,7 @@ class TableViewCell: UITableViewCell {
         return label
     }()
     
-    private let customView: UIView = {
+    let customView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.layer.cornerRadius = 5
@@ -46,9 +46,8 @@ class TableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        setConstraints()
         
-        self.backgroundColor = .clear
+        configViews()
     }
     
     // MARK: Config views
@@ -58,29 +57,9 @@ class TableViewCell: UITableViewCell {
         dateText.text = note.date
     }
     
-    private func setConstraints() {
-        
-        self.addSubview(customView)
-        NSLayoutConstraint.activate([
-            customView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            customView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            customView.heightAnchor.constraint(equalToConstant: 50)
-        ])
-
-        
-        customView.addSubview(writtenTextLabel)
-        NSLayoutConstraint.activate([
-            writtenTextLabel.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 10),
-            writtenTextLabel.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -10),
-            writtenTextLabel.centerYAnchor.constraint(equalTo: customView.centerYAnchor, constant: -10)
-        ])
-        
-        customView.addSubview(dateText)
-        NSLayoutConstraint.activate([
-            dateText.leadingAnchor.constraint(equalTo: customView.leadingAnchor, constant: 10),
-            dateText.trailingAnchor.constraint(equalTo: customView.trailingAnchor, constant: -10),
-            dateText.centerYAnchor.constraint(equalTo: customView.centerYAnchor,constant: 15)
-        ])
+    func configViews() {
+        self.backgroundColor = .clear
+        setConstraints()
     }
     
 }

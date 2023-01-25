@@ -19,6 +19,10 @@
 		FA46CC642945534C0038E894 /* DataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA46CC632945534B0038E894 /* DataDelegate.swift */; };
 		FA4F8C2B2954ABB80077675C /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA4F8C292954ABB80077675C /* ToDoList.xcdatamodeld */; };
 		FA4F8C2D2954AC900077675C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4F8C2C2954AC900077675C /* CoreDataManager.swift */; };
+		FA84E59029812D3200D741D5 /* VCConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84E58F29812D3200D741D5 /* VCConstraints.swift */; };
+		FA84E59429812F5F00D741D5 /* Delegate,Datasource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84E59329812F5F00D741D5 /* Delegate,Datasource.swift */; };
+		FA84E5972981358000D741D5 /* CellConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84E5962981358000D741D5 /* CellConstraints.swift */; };
+		FA84E59A2981362D00D741D5 /* EAConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84E5992981362D00D741D5 /* EAConstraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +40,10 @@
 		FA46CC632945534B0038E894 /* DataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDelegate.swift; sourceTree = "<group>"; };
 		FA4F8C2A2954ABB80077675C /* ToDoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoList.xcdatamodel; sourceTree = "<group>"; };
 		FA4F8C2C2954AC900077675C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		FA84E58F29812D3200D741D5 /* VCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VCConstraints.swift; sourceTree = "<group>"; };
+		FA84E59329812F5F00D741D5 /* Delegate,Datasource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Delegate,Datasource.swift"; sourceTree = "<group>"; };
+		FA84E5962981358000D741D5 /* CellConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConstraints.swift; sourceTree = "<group>"; };
+		FA84E5992981362D00D741D5 /* EAConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EAConstraints.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,7 @@
 		FA46CC522945447C0038E894 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				FA46CC3C294542170038E894 /* Main.storyboard */,
 				FA46CC3F294542180038E894 /* Assets.xcassets */,
 				FA46CC41294542180038E894 /* LaunchScreen.storyboard */,
 				FA46CC44294542180038E894 /* Info.plist */,
@@ -101,8 +110,8 @@
 		FA46CC53294544960038E894 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FA46CC3A294542170038E894 /* ViewController.swift */,
-				FA46CC60294553210038E894 /* EditAddNoteViewController.swift */,
+				FA84E59129812D3700D741D5 /* ViewController */,
+				FA84E5952981354000D741D5 /* EditNoteViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -110,8 +119,7 @@
 		FA46CC54294544A00038E894 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FA46CC56294545830038E894 /* TableViewCell.swift */,
-				FA46CC3C294542170038E894 /* Main.storyboard */,
+				FA84E5982981358400D741D5 /* TableViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -139,6 +147,34 @@
 				FA46CC632945534B0038E894 /* DataDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FA84E59129812D3700D741D5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA46CC3A294542170038E894 /* ViewController.swift */,
+				FA84E58F29812D3200D741D5 /* VCConstraints.swift */,
+				FA84E59329812F5F00D741D5 /* Delegate,Datasource.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		FA84E5952981354000D741D5 /* EditNoteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA46CC60294553210038E894 /* EditAddNoteViewController.swift */,
+				FA84E5992981362D00D741D5 /* EAConstraints.swift */,
+			);
+			path = EditNoteViewController;
+			sourceTree = "<group>";
+		};
+		FA84E5982981358400D741D5 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				FA46CC56294545830038E894 /* TableViewCell.swift */,
+				FA84E5962981358000D741D5 /* CellConstraints.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -214,12 +250,16 @@
 			files = (
 				FA46CC3B294542170038E894 /* ViewController.swift in Sources */,
 				FA46CC61294553210038E894 /* EditAddNoteViewController.swift in Sources */,
+				FA84E59029812D3200D741D5 /* VCConstraints.swift in Sources */,
 				FA42AC742945E3DB007F00DF /* Date.swift in Sources */,
+				FA84E5972981358000D741D5 /* CellConstraints.swift in Sources */,
 				FA46CC57294545830038E894 /* TableViewCell.swift in Sources */,
 				FA46CC642945534C0038E894 /* DataDelegate.swift in Sources */,
 				FA46CC37294542170038E894 /* AppDelegate.swift in Sources */,
+				FA84E59429812F5F00D741D5 /* Delegate,Datasource.swift in Sources */,
 				FA4F8C2B2954ABB80077675C /* ToDoList.xcdatamodeld in Sources */,
 				FA4F8C2D2954AC900077675C /* CoreDataManager.swift in Sources */,
+				FA84E59A2981362D00D741D5 /* EAConstraints.swift in Sources */,
 				FA46CC39294542170038E894 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

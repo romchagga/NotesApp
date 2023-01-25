@@ -46,25 +46,15 @@ class EditAddNoteViewController: UIViewController {
     func passedDataDelegate() {
         navigationItem.backAction = UIAction(handler: { [weak self] _ in
             self?.navigationController?.popViewController(animated: true)
-            if let text = self?.textView.text, !text.isEmpty  {
-                self?.note.text = text
-                self?.note.date = Date().format()
+            if let text = self?.textView.text, !text.isEmpty,
+               let note = self?.note {
+                note.text = text
+                note.date = Date().format()
                 CoreDataManager.shared.save()
-                self?.delegate?.updateAdd(note: (self?.note)!)
+                self?.delegate?.updateAdd(note: (note))
             }
         }
       )
-    }
-    
-    
-    func setConstraints() {
-        view.addSubview(textView)
-        NSLayoutConstraint.activate([
-            textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            textView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            textView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
     }
     
 }
