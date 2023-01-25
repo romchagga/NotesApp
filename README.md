@@ -8,5 +8,6 @@
 * UIKit
 * MVC
 * CoreData
+* SFSafariViewController
 * NSLayoutConstraint
 * SearchController
